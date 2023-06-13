@@ -1,4 +1,4 @@
-import { Environment } from "@react-three/drei";
+import { Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei";
 
 function App() {
   return (
@@ -12,6 +12,9 @@ function App() {
         background={false}
         files={"assets/textures/envmap.hdr"}
       />
+
+      <PerspectiveCamera makeDefault fov={33} position={[-0.07, 16.41, -24.1]} />
+      <OrbitControls target={[0.02, 0.806, 0.427]} maxPolarAngle={Math.PI * 0.45} />
     </>
   )
 }
