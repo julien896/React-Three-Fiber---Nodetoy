@@ -1,8 +1,11 @@
-import { Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei";
-import Scene from "./Scene";
 import { Suspense, useEffect } from "react";
-import { useThree } from "@react-three/fiber";
+
+import Scene from "./Scene";
 import Meteor from "./Meteor";
+
+import { useThree } from "@react-three/fiber";
+import { NodeToyTick } from "@nodetoy/react-nodetoy";
+import { Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei";
 
 function App() {
   const state = useThree();
@@ -25,6 +28,8 @@ function App() {
 
       <PerspectiveCamera makeDefault fov={33} position={[-0.07, 16.41, -24.1]} />
       <OrbitControls target={[0.02, 0.806, 0.427]} maxPolarAngle={Math.PI * 0.45} />
+
+      <NodeToyTick />
 
       <Suspense fallback={null}>
         <Scene />

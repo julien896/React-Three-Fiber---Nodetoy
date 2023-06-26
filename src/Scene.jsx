@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 import { useGLTF, useTexture } from "@react-three/drei";
+import { NodeToyMaterial } from "@nodetoy/react-nodetoy";
+import { data as fragmentsShaderData } from "./fragments-shader"
 
 export default function Scene() {
   const { nodes } = useGLTF("assets/models/scene.glb");
@@ -52,6 +54,10 @@ export default function Scene() {
 
       <mesh geometry={nodes.fragments.geometry}>
         <meshBasicMaterial map={fragments} />
+      </mesh>
+
+      <mesh geometry={nodes.ground.geometry}>
+        <NodeToyMaterial data={fragmentsShaderData} />
       </mesh>
 
       <mesh geometry={nodes.debris.geometry}>
