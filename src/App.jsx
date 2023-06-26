@@ -2,6 +2,7 @@ import { Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei
 import Scene from "./Scene";
 import { Suspense, useEffect } from "react";
 import { useThree } from "@react-three/fiber";
+import Meteor from "./Meteor";
 
 function App() {
   const state = useThree();
@@ -27,6 +28,7 @@ function App() {
 
       <Suspense fallback={null}>
         <Scene />
+        <Meteor />
       </Suspense>
     </>
   )
