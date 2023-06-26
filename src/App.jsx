@@ -2,10 +2,12 @@ import { Suspense, useEffect } from "react";
 
 import Scene from "./Scene";
 import Meteor from "./Meteor";
+import Beams from "./Beams";
 
 import { useThree } from "@react-three/fiber";
 import { NodeToyTick } from "@nodetoy/react-nodetoy";
 import { Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { EffectComposer, Vignette, ChromaticAberration } from "@react-three/postprocessing";
 
 function App() {
   const state = useThree();
@@ -34,7 +36,17 @@ function App() {
       <Suspense fallback={null}>
         <Scene />
         <Meteor />
+        <Beams />
       </Suspense>
+
+      <EffectComposer>
+        <Vignette eskil={false} offset={0.1} darkness={0.35} />
+        <ChromaticAberration
+          offset={[0.0035, 0.00035]}
+          radialModulation={true}
+          modulationOffset={0.4}
+        />
+      </EffectComposer>
     </>
   )
 }
